@@ -33,7 +33,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             <Link
               href="/"
               className="text-gray-300 hover:text-white transition-colors font-medium"
@@ -57,6 +57,25 @@ export default function Header() {
               className="text-gray-300 hover:text-white transition-colors font-medium"
             >
               Bài viết
+            </Link>
+            <Link
+              href="/get-token"
+              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-lg font-semibold shadow-lg shadow-green-500/25 hover:shadow-green-500/40 transition-all"
+            >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
+                />
+              </svg>
+              Token Miễn Phí
             </Link>
           </nav>
 
@@ -121,6 +140,26 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Bài viết
+              </Link>
+              <Link
+                href="/get-token"
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg font-semibold shadow-lg mt-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
+                  />
+                </svg>
+                Token Miễn Phí
               </Link>
             </nav>
           </div>
