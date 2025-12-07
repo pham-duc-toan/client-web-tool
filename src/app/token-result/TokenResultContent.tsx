@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { formatDate, DateFormat } from "@/lib/formatter";
 
 export default function TokenResultContent() {
   const searchParams = useSearchParams();
@@ -22,6 +23,9 @@ export default function TokenResultContent() {
           break;
         case "server_error":
           setError("Có lỗi xảy ra trên server. Vui lòng thử lại sau.");
+          break;
+        case "invalid_request":
+          setError("Yêu cầu không hợp lệ. Vui lòng xem quảng cáo đầy đủ.");
           break;
         default:
           setError("Có lỗi không xác định. Vui lòng thử lại.");
@@ -49,10 +53,7 @@ export default function TokenResultContent() {
 
   const formatExpiryTime = () => {
     if (!expiresAt) return "";
-    return expiresAt.toLocaleTimeString("vi-VN", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+    return formatDate(expiresAt, DateFormat["dd/MM/yyyy HH:mm"]);
   };
 
   if (error) {

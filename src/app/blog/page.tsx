@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { formatDate, DateFormat } from "@/lib/formatter";
 
 export const metadata: Metadata = {
   title: "Bài viết - FC Tool",
@@ -90,7 +91,7 @@ export default function BlogPage() {
                     {post.category}
                   </span>
                   <span className="text-xs text-gray-500">
-                    {new Date(post.date).toLocaleDateString("vi-VN")}
+                    {formatDate(post.date, DateFormat["dd/MM/yyyy"])}
                   </span>
                 </div>
 

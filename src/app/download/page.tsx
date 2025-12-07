@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getAllReleases, ToolReleaseDto } from "@/lib/api";
+import { formatDate as formatDateUtil, DateFormat } from "@/lib/formatter";
 
 export const metadata: Metadata = {
   title: "Tải xuống - FC Tool",
@@ -12,14 +13,6 @@ function formatBytes(bytes: number): string {
   const sizes = ["Bytes", "KB", "MB", "GB"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
   return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
-}
-
-function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString("vi-VN", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
 }
 
 export default async function DownloadPage() {
@@ -111,11 +104,13 @@ export default async function DownloadPage() {
                   </div>
 
                   <div className="flex items-center gap-4 text-sm text-gray-400">
-                    <span>{formatDate(release.createdAt)}</span>
-                    {release.fileSize && (
-                      <span>• {formatBytes(release.fileSize)}</span>
-                    )}
-                    <span>• {release.fileName}</span>
+                    <span>
+                      {formatDateUtil(
+                        release.createdAt,
+                        DateFormat["d MMMM yyyy"]
+                      )}
+                    </span>
+                    <span>• {formatBytes(release.fileSize)}</span>
                   </div>
 
                   {release.notes && (
