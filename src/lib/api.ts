@@ -15,6 +15,18 @@ export interface ToolReleaseDto {
   downloadUrl?: string;
 }
 
+export interface EventGameDto {
+  id: number;
+  name: string;
+  link: string;
+  startDate: string;
+  endDate: string;
+  createdAt: string;
+  createdBy?: string;
+  updatedAt?: string;
+  updatedBy?: string;
+}
+
 export interface ApiResponse<T> {
   success: boolean;
   message?: string;
@@ -59,5 +71,30 @@ export async function getDownloadUrl(
   } catch (error) {
     console.error("Error fetching download URL:", error);
     return { success: false, message: "Không thể lấy link tải" };
+  }
+}
+
+// Lấy danh sách sự kiện đang diễn ra - Public API
+export async function getActiveEvents(): Promise<ApiResponse<EventGameDto[]>> {
+  try {
+    const res = await fetch(`${API_URL}/eventgames/active`, {
+      cache: "no-store", // Không cache
+    });
+
+    if (!res.ok) {
+      console.error("Error fetching active events: HTTP", res.status);
+      return { success: false, message: "Không thể kết nối server", data: [] };
+    }
+
+    const text = await res.text();
+    if (!text) {
+      return { success: true, data: [] };
+    }
+
+    const data = JSON.parse(text);
+    return data;
+  } catch (error) {
+    console.error("Error fetching active events:", error);
+    return { success: false, message: "Không thể kết nối server", data: [] };
   }
 }

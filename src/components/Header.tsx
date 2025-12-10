@@ -53,6 +53,12 @@ export default function Header() {
               Tải xuống
             </Link>
             <Link
+              href="/events"
+              className="text-gray-300 hover:text-white transition-colors font-medium"
+            >
+              Sự kiện
+            </Link>
+            <Link
               href="/blog"
               className="text-gray-300 hover:text-white transition-colors font-medium"
             >
@@ -133,6 +139,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Tải xuống
+              </Link>
+              <Link
+                href="/events"
+                className="text-gray-300 hover:text-white transition-colors font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sự kiện
               </Link>
               <Link
                 href="/blog"
