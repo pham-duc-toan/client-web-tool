@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { getAllReleases, ToolReleaseDto } from "@/lib/api";
 import { formatDate as formatDateUtil, DateFormat } from "@/lib/formatter";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: "Tải xuống - FC Tool",
   description: "Tải xuống các phiên bản FC Tool.",
