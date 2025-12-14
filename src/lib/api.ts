@@ -37,7 +37,7 @@ export interface ApiResponse<T> {
 export async function getActiveRelease(): Promise<ApiResponse<ToolReleaseDto>> {
   try {
     const res = await fetch(`${API_URL}/toolreleases/active`, {
-      next: { revalidate: 60 }, // Cache 60 giây
+      cache: "no-store", // Không cache để luôn lấy data mới
     });
     return res.json();
   } catch (error) {
@@ -50,7 +50,7 @@ export async function getActiveRelease(): Promise<ApiResponse<ToolReleaseDto>> {
 export async function getAllReleases(): Promise<ApiResponse<ToolReleaseDto[]>> {
   try {
     const res = await fetch(`${API_URL}/toolreleases/public`, {
-      next: { revalidate: 60 }, // Cache 60 giây
+      cache: "no-store", // Không cache để luôn lấy data mới
     });
     return res.json();
   } catch (error) {
